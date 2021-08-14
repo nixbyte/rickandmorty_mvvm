@@ -19,7 +19,6 @@ typealias MutableLiveResult<T> = MutableLiveData<Result<T>>
 open class AbstractViewModel : ViewModel() {
 
     private val tasks = mutableSetOf<Task<*>>()
-    val subscriptions = CompositeDisposable()
 
     override fun onCleared() {
         super.onCleared()

@@ -46,5 +46,9 @@ open class BaseListAdapter<T: ItemClickable?>(
         }
     }
 
+    fun getList(): List<T> {
+        return items
+    }
+
     fun isEmpty(): Boolean = items.isEmpty()
 }

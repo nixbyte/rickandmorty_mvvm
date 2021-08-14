@@ -17,9 +17,7 @@ class PaginatedRecyclerView @JvmOverloads constructor(
 
     var pageSize = 5
 
-    class OffsetAndSize(val offset: Int, val pageSize: Int) {
-        val pageNumber = offset / pageSize + 1
-    }
+    class OffsetAndSize(val offset: Int, val pageSize: Int)
 
     private var paginationListenable: PaginationListenable? = null
     private val scrollingChanel = PublishSubject.create<OffsetAndSize>()
@@ -47,6 +45,7 @@ class PaginatedRecyclerView @JvmOverloads constructor(
                 val firstVisibleItemPosition =
                     (layoutManager as? LinearLayoutManager)?.findFirstVisibleItemPosition() ?: 0
 
+
                 if (paginationListenable?.isPaginationEnabled() == true) {
                     if ((firstVisibleItemPosition + visibleItemCount) >= totalItemCount
                         && firstVisibleItemPosition >= 0
@@ -61,5 +60,9 @@ class PaginatedRecyclerView @JvmOverloads constructor(
 
     fun subscribeToLoadingChanel(subscriptions: CompositeDisposable, onNext: (OffsetAndSize) -> Unit) {
         subscriptions.add(scrollingChanel.subscribe(onNext))
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
     }
 }

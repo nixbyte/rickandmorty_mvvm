@@ -1,5 +1,6 @@
 package com.nixbyte.rickandmortymvvm.screens.locations.list
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.nixbyte.platform.model.takeSuccess
 import com.nixbyte.platform.view.AbstractFragment
 import com.nixbyte.platform.view.onTryAgain
 import com.nixbyte.platform.view.renderSimpleResult
@@ -20,31 +22,29 @@ import com.nixbyte.rickandmortymvvm.common.PaginatedRecyclerView
 import com.nixbyte.rickandmortymvvm.common.recyclerview.PaginationListAdapter
 import com.nixbyte.rickandmortymvvm.databinding.FragmentLocationsBinding
 import com.nixbyte.rickandmortymvvm.model.api.domain.Location
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_locations.view.*
 
 class LocationsFragment : AbstractFragment() {
+
+    val TAG = LocationsFragment::class.simpleName
 
     class Screen : SerializableScreen
 
     override val viewModel by screenViewModel<LocationsViewModel>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    private val subscriptions = CompositeDisposable()
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = FragmentLocationsBinding.inflate(inflater,container,false)
-        val adapter = PaginationListAdapter<Location>(R.layout.locations_list_item)
-        binding.root.list.adapter = adapter
+        binding.root.list.adapter = viewModel.adapter
         binding.root.list.layoutManager = LinearLayoutManager(requireContext())
 
-        var currentOffset: PaginatedRecyclerView.OffsetAndSize = PaginatedRecyclerView.OffsetAndSize(0,10)
-
         binding.list.run {
-            pageSize = currentOffset.pageSize
+            pageSize = 10
             addItemDecoration(DividerItemDecoration(this.context, RecyclerView.VERTICAL))
-            subscribeToLoadingChanel(viewModel.subscriptions) { offsetAndLimit ->
-                if (currentOffset.offset < offsetAndLimit.offset) {
-                    viewModel.loadMoreItems(offsetAndLimit)
-                    currentOffset = offsetAndLimit
-                }
+            subscribeToLoadingChanel(subscriptions) { offsetAndLimit ->
+                viewModel.loadMoreItems(offsetAndLimit)
             }
             startScrollingChanel()
         }
@@ -54,17 +54,20 @@ class LocationsFragment : AbstractFragment() {
                 root = binding.root,
                 result = result,
                 onSuccess = {
-                    adapter.addMore(it, currentOffset.pageSize)
+                    viewModel.addToAdapter(it)
                 }
             )
         }
 
         onTryAgain(binding.root) {
-            adapter.refresh()
-            currentOffset = PaginatedRecyclerView.OffsetAndSize(0,10)
             viewModel.tryAgain()
         }
 
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        subscriptions.dispose()
     }
 }
