@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RickAndMortyMVVM</string>
+    <string name="locations">Локации</string>
+    <string name="characters">Персонажи</string>
+    <string name="episode">Эпизоды</string>
+    <string name="fragment_changed">Фрагмент изменен</string>
+
+    <string name="error_try_again_later">Ошибка! Пожалуйста попробуйте позже!</string>
+    <string name="try_again">Еще раз</string>
+</resources>

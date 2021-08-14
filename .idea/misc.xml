@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/nixbyte/IdeaProjects/mobile/RickAndMortyMVVM/app/src/main/res/drawable/splash.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/nixbyte/IdeaProjects/mobile/RickAndMortyMVVM/app/src/main/res/layout/activity_main.xml" value="0.3802083333333333" />
+        <entry key="..\:/Users/nixbyte/IdeaProjects/mobile/RickAndMortyMVVM/app/src/main/res/layout/fragment_character.xml" value="0.371875" />
+        <entry key="..\:/Users/nixbyte/IdeaProjects/mobile/RickAndMortyMVVM/app/src/main/res/layout/fragment_characters.xml" value="0.23731884057971014" />
+        <entry key="..\:/Users/nixbyte/IdeaProjects/mobile/RickAndMortyMVVM/app/src/main/res/layout/fragment_episodes.xml" value="0.38385416666666666" />
+        <entry key="..\:/Users/nixbyte/IdeaProjects/mobile/RickAndMortyMVVM/app/src/main/res/layout/fragment_location.xml" value="0.371875" />
+        <entry key="..\:/Users/nixbyte/IdeaProjects/mobile/RickAndMortyMVVM/app/src/main/res/layout/fragment_locations.xml" value="0.3729166666666667" />
+        <entry key="..\:/Users/nixbyte/IdeaProjects/mobile/RickAndMortyMVVM/app/src/main/res/layout/locations_list_item.xml" value="0.384375" />
+        <entry key="..\:/Users/nixbyte/IdeaProjects/mobile/RickAndMortyMVVM/app/src/main/res/layout/part_result.xml" value="0.38385416666666666" />
+        <entry key="..\:/Users/nixbyte/IdeaProjects/mobile/RickAndMortyMVVM/app/src/main/res/layout/progress_list_item.xml" value="0.384375" />
+        <entry key="..\:/Users/nixbyte/IdeaProjects/mobile/RickAndMortyMVVM/app/src/main/res/menu/navigation_items.xml" value="0.37552083333333336" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
