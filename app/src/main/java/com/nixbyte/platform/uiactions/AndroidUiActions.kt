@@ -14,5 +14,4 @@ class AndroidUiActions(
     override fun getString(messageRes: Int, vararg args: Any): String {
         return appContext.getString(messageRes, *args)
     }
-
 }

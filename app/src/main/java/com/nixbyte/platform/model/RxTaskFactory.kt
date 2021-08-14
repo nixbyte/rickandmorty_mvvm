@@ -1,6 +1,5 @@
 package com.nixbyte.platform.model
 
-import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -15,8 +14,6 @@ class RxTaskFactory : RxTasksFactory {
         var subscription: Disposable? = null
         var cancelled = false
 
-        val TAG = RxTask::class.simpleName
-
         override fun await(): T = body().blockingGet()
 
         override fun enqueue(listener: TaskListener<T>) {
@@ -27,7 +24,6 @@ class RxTaskFactory : RxTasksFactory {
                 .subscribe({ result ->
                 publishResult(listener, SuccessResult(result))
             } , {
-                    Log.e(TAG, "enqueue: ${it.message}", )
                 publishResult(listener,ErrorResult(Exception(it.message)))
             })
         }

@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.nixbyte.platform.viewmodel.SerializableScreen
 import com.nixbyte.rickandmortymvvm.databinding.FragmentCharactersBinding
 
 class CharactersFragment : Fragment() {
 
     val TAG = CharactersFragment::class.simpleName
+
+    class Screen : SerializableScreen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

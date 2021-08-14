@@ -8,6 +8,7 @@ import com.nixbyte.platform.uiactions.UiActions
 import com.nixbyte.platform.viewmodel.AbstractViewModel
 import com.nixbyte.platform.viewmodel.LiveResult
 import com.nixbyte.platform.viewmodel.MutableLiveResult
+import com.nixbyte.platform.viewmodel.preparePaginationRequestParameter
 import com.nixbyte.rickandmortymvvm.R
 import com.nixbyte.rickandmortymvvm.common.PaginatedRecyclerView
 import com.nixbyte.rickandmortymvvm.model.api.domain.Location
@@ -46,13 +47,13 @@ class LocationsViewModel(private val navigation: Navigation
         load()
     }
 
-    fun load(offsetAndSize: PaginatedRecyclerView.OffsetAndSize = PaginatedRecyclerView.OffsetAndSize(0,10)) {
-        var ids = ""
-        for (i in offsetAndSize.offset .. offsetAndSize.offset+offsetAndSize.pageSize) {
-            ids += if (i == 0) "${i+1}" else  ",${i+1}"
-        }
+    fun loadMoreItems(offsetAndSize: PaginatedRecyclerView.OffsetAndSize) {
+        load(offsetAndSize)
+    }
 
-        Log.e("Load", "offset ${offsetAndSize.offset} size ${offsetAndSize.pageSize}")
+    private fun load(offsetAndSize: PaginatedRecyclerView.OffsetAndSize = PaginatedRecyclerView.OffsetAndSize(0,10)) {
+        val ids = preparePaginationRequestParameter(offsetAndSize)
         locationsRepository.getMultipleLocations(ids).into(_currentLocations)
     }
 }
+

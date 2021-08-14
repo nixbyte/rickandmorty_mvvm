@@ -16,7 +16,11 @@ import kotlinx.android.synthetic.main.part_result.view.*
  * - if [result] is [ErrorResult] -> only error container is displayed
  * - if [result] is [SuccessResult] -> error container & progress-bar is hidden, all other views are visible
  */
-fun <T> AbstractFragment.renderSimpleResult(root: ViewGroup, result: Result<T>, onSuccess: (T) -> Unit) {
+fun <T> AbstractFragment.renderSimpleResult(root: ViewGroup
+                                           ,result: Result<T>
+                                           ,onPending: (T) -> Unit = {}
+                                           ,onError: (T) -> Unit = {}
+                                           ,onSuccess: (T) -> Unit) {
     val binding = PartResultBinding.bind(root)
     renderResult(
         root = root,
@@ -24,11 +28,13 @@ fun <T> AbstractFragment.renderSimpleResult(root: ViewGroup, result: Result<T>, 
         onPending = {
             binding.root.swipe_refresh.visibility = View.VISIBLE
             binding.root.swipe_refresh.isRefreshing = true
+            onPending
         },
         onError = {
             binding.errorContainer.visibility = View.VISIBLE
             binding.root.swipe_refresh.isRefreshing = false
             binding.root.swipe_refresh.visibility = View.GONE
+            onError
         },
         onSuccess = { successData ->
             root.swipe_refresh.isRefreshing = false

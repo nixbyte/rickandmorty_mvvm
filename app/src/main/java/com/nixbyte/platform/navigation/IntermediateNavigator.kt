@@ -11,6 +11,10 @@ class IntermediateNavigator : Navigation {
         it.showScreen(screen)
     }
 
+    override fun addScreen(screen: SerializableScreen) = targetNavigator {
+        it.addScreen(screen)
+    }
+
     override fun goBack(result: Any?) = targetNavigator {
         it.goBack(result)
     }

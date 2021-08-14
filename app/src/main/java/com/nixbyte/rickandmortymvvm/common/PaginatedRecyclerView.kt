@@ -2,6 +2,7 @@ package com.nixbyte.rickandmortymvvm.common
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nixbyte.rickandmortymvvm.common.recyclerview.PaginationListenable

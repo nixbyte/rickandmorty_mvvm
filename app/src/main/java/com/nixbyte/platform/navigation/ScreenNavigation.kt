@@ -5,4 +5,5 @@ import com.nixbyte.platform.viewmodel.SerializableScreen
 
 interface ScreenNavigation {
     fun showScreen(screen: SerializableScreen)
+    fun addScreen(screen: SerializableScreen)
 }

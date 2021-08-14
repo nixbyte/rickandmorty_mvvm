@@ -9,6 +9,8 @@ import com.nixbyte.platform.utils.viewModelCreator
 import com.nixbyte.platform.view.FragmentsHolder
 import com.nixbyte.platform.viewmodel.ActivityScopeViewModel
 import com.nixbyte.rickandmortymvvm.databinding.ActivityMainBinding
+import com.nixbyte.rickandmortymvvm.screens.characters.CharactersFragment
+import com.nixbyte.rickandmortymvvm.screens.episodes.EpisodesFragment
 import com.nixbyte.rickandmortymvvm.screens.locations.list.LocationsFragment
 
 class MainActivity : AppCompatActivity(), FragmentsHolder {
@@ -43,6 +45,26 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
             initialScreenCreator = { LocationsFragment.Screen() }
         )
         navigator.onCreate(savedInstanceState)
+
+        binding.navigation.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.action_location -> {
+                    navigator.showScreen(LocationsFragment.Screen())
+                    true
+                }
+                R.id.action_character -> {
+                    navigator.showScreen(CharactersFragment.Screen())
+                    true
+                }
+                R.id.action_episode -> {
+                    navigator.showScreen(EpisodesFragment.Screen())
+                    true
+                }
+                else -> {
+                    true
+                }
+            }
+        }
     }
 
     override fun onDestroy() {

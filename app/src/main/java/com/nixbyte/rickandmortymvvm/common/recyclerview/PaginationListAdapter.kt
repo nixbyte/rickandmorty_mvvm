@@ -72,12 +72,12 @@ class PaginationListAdapter<T : ItemClickable?>(
         removeLoading()
         isListEnded = false
         isPaginationLocked = false
-        this.clear()
+        clear()
     }
 
     fun addMore(list: List<T>, requieredPageSize: Int) {
         if (list.size < requieredPageSize)
             isListEnded = true
-        this.add(list)
+        add(list)
     }
 }
