@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.nixbyte.rickandmortymvvm.common.databinding.ViewDataBindingComponent
 
 open class BaseListAdapter<T: ItemClickable?>(
     val items: List<T> = mutableListOf(),
@@ -15,7 +16,7 @@ open class BaseListAdapter<T: ItemClickable?>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T> {
         val inflater = LayoutInflater.from(parent.context)
-        val binding: ViewDataBinding = DataBindingUtil.inflate(inflater, itemLayoutId, parent, false)
+        val binding: ViewDataBinding = DataBindingUtil.inflate(inflater, itemLayoutId, parent, false, ViewDataBindingComponent())
         return createViewHolder(binding)
     }
 

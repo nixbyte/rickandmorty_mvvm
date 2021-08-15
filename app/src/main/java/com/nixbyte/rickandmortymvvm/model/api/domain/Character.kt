@@ -1,5 +1,13 @@
 package com.nixbyte.rickandmortymvvm.model.api.domain
 
+import android.os.Parcelable
+import android.view.View
+import androidx.room.Ignore
+import com.nixbyte.rickandmortymvvm.common.recyclerview.ItemClickable
+import kotlinx.android.parcel.IgnoredOnParcel
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Character(
     val id: Long,
     val name: String,
@@ -13,4 +21,9 @@ data class Character(
     val episode: List<String>,
     val url: String,
     val created: String
-)
+) : Parcelable, ItemClickable {
+    @Ignore
+    @IgnoredOnParcel
+    @Volatile
+    override var onItemClick: (View) -> Unit = {}
+}

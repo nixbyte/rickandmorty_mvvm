@@ -11,6 +11,7 @@ import com.nixbyte.platform.model.SuccessResult
 import com.nixbyte.platform.viewmodel.AbstractViewModel
 
 abstract class AbstractFragment : Fragment() {
+
     abstract val viewModel: AbstractViewModel
 
     /**
@@ -31,5 +32,12 @@ abstract class AbstractFragment : Fragment() {
             is ErrorResult -> onError(result.exception)
             is PendingResult -> onPending()
         }
+    }
+
+    /**
+     * Call this method when activity controls (e.g. toolbar) should be re-rendered
+     */
+    fun notifyScreenUpdates() {
+        (requireActivity() as FragmentsHolder).notifyScreenUpdates()
     }
 }

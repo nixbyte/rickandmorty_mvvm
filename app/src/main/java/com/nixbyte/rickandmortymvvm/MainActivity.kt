@@ -12,6 +12,7 @@ import com.nixbyte.rickandmortymvvm.databinding.ActivityMainBinding
 import com.nixbyte.rickandmortymvvm.screens.characters.CharactersFragment
 import com.nixbyte.rickandmortymvvm.screens.episodes.EpisodesFragment
 import com.nixbyte.rickandmortymvvm.screens.locations.list.LocationsFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), FragmentsHolder {
 
@@ -42,7 +43,10 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
                 popEnterAnim = R.anim.pop_enter,
                 popExitAnim = R.anim.pop_exit
             ),
-            initialScreenCreator = { LocationsFragment.Screen() }
+            initialScreenCreator = {
+                navigation.selectedItemId = R.id.action_character
+                CharactersFragment.Screen()
+            }
         )
         navigator.onCreate(savedInstanceState)
 

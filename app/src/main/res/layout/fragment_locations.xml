@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
-        <com.nixbyte.rickandmortymvvm.common.PaginatedRecyclerView
+        <com.nixbyte.rickandmortymvvm.common.recyclerview.PaginatedRecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

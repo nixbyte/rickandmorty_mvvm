@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.nixbyte.rickandmortymvvm.R
+import com.nixbyte.rickandmortymvvm.databinding.ProgressListItemBinding
 
 typealias ItemAction<T> = (View, T?, Int) -> Unit
 
@@ -15,8 +16,6 @@ class PaginationListAdapter<T : ItemClickable?>(
     items: List<T?> = arrayListOf()
 ) : BaseListAdapter<T?>(items, itemLayoutId, onItemClickAction),
     PaginationListenable {
-
-    val TAG = PaginationListAdapter::class.simpleName
 
     var isPaginationLocked = false
     private var isLoading = false

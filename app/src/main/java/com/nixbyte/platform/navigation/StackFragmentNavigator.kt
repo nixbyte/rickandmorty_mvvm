@@ -66,6 +66,7 @@ class StackFragmentNavigator(
         if (f is HasScreenTitle && f.getScreenTitle() != null) {
             // fragment has custom screen title -> display it
             activity.supportActionBar?.title = f.getScreenTitle()
+
         } else {
             activity.supportActionBar?.title = defaultTitle
         }

@@ -22,30 +22,36 @@ class ApiConstructor(serverUrl: String
                     ,addingHeaders: MutableList<Header>
                     ,settingHeaders: MutableList<Header>) {
 
-    private var retrofit: Retrofit = Retrofit.Builder()
+    private val okHttpClient = OkHttpClient.Builder()
+    .addInterceptor(HttpLoggingInterceptor().setLevel(logLevel))
+    .addNetworkInterceptor(object : Interceptor {
+        @Throws(IOException::class)
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val original: Request = chain.request()
+            // Request customization: add request headers
+            val requestBuilder: Request.Builder = original.newBuilder()
+            for (header in addingHeaders)
+                requestBuilder.addHeader(
+                    header.name.utf8().capitalize(),
+                    header.value.utf8()
+                )
+            for (header in settingHeaders)
+                requestBuilder.header(header.name.utf8().capitalize(), header.value.utf8())
+            val request: Request = requestBuilder.build()
+            return chain.proceed(request)
+        }
+    }).build()
+
+    private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(serverUrl)
         .addCallAdapterFactory(callAdapterFactory)
         .addConverterFactory(converterFactory)
-        .client(OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(logLevel))
-            .addNetworkInterceptor(object : Interceptor {
-                @Throws(IOException::class)
-                override fun intercept(chain: Interceptor.Chain): Response {
-                    val original: Request = chain.request()
-                    // Request customization: add request headers
-                    val requestBuilder: Request.Builder = original.newBuilder()
-                    for (header in addingHeaders)
-                        requestBuilder.addHeader(
-                            header.name.utf8().capitalize(),
-                            header.value.utf8()
-                        )
-                    for (header in settingHeaders)
-                        requestBuilder.header(header.name.utf8().capitalize(), header.value.utf8())
-                    val request: Request = requestBuilder.build()
-                    return chain.proceed(request)
-                }
-            }).build())
+        .client(okHttpClient)
         .build()
+
+    private fun getOkHttp() : OkHttpClient {
+        return okHttpClient
+    }
 
     private fun getRetrofit() : Retrofit {
         return retrofit
@@ -95,6 +101,8 @@ class ApiConstructor(serverUrl: String
         fun setConverterFactory(converterFactory: Converter.Factory?) = apply {
             this.converterFactory = converterFactory
         }
+
+        fun okhttp() = ApiConstructor(this).getOkHttp()
 
         fun <T> create(service: Class<T>) = ApiConstructor(this).getRetrofit().create(service)
     }

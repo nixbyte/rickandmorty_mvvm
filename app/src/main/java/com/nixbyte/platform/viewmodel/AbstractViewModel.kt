@@ -7,8 +7,6 @@ import com.nixbyte.platform.model.PendingResult
 import com.nixbyte.platform.model.Task
 import com.nixbyte.platform.model.Result
 import com.nixbyte.platform.model.TaskListener
-import com.nixbyte.rickandmortymvvm.common.PaginatedRecyclerView
-import io.reactivex.disposables.CompositeDisposable
 
 typealias LiveResult<T> = LiveData<Result<T>>
 typealias MutableLiveResult<T> = MutableLiveData<Result<T>>

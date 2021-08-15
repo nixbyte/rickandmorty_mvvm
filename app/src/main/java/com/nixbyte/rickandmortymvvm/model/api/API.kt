@@ -17,8 +17,7 @@ object API {
     private const val API_VERSION = "/api/"
 
     const val DEFAULT_HOST = TEST_API + API_VERSION
-
-    private var A = ApiConstructor.Builder()
+    val A = ApiConstructor.Builder()
         .setHeader(Header("Content-Type","application/json")) //set header for single value headers like Content-Type, Authorization etc
 //        .addHeader(Header("Authorization","Bearer asdfadf")) //add header method for multiple value headers list Cache-Control
         .setLogLevel(HttpLoggingInterceptor.Level.BODY)

@@ -25,7 +25,7 @@ interface CharacterApiService {
     fun getAllCharacters() : Single<Response<All<Character>>>
 
     @GET("character/{id}")
-    fun getCharacterById(@Path("id") id: Int) : Single<Response<Character>>
+    fun getCharacterById(@Path("id") id: String) : Single<Response<Character>>
 
     @GET("character/{id}")
     fun getMultipleCharacters(@Path("id") ids: String) : Single<Response<List<Character>>>

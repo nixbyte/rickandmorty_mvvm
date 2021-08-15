@@ -21,6 +21,5 @@ data class Location(
 
     @Ignore
     @IgnoredOnParcel
-    @Volatile
     override var onItemClick: (View) -> Unit = {}
 }
