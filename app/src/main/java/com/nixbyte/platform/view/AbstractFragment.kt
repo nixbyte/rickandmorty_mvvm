@@ -8,11 +8,11 @@ import com.nixbyte.platform.model.ErrorResult
 import com.nixbyte.platform.model.PendingResult
 import com.nixbyte.platform.model.Result
 import com.nixbyte.platform.model.SuccessResult
-import com.nixbyte.platform.viewmodel.AbstractViewModel
+import com.nixbyte.platform.viewmodel.BaseViewModel
 
 abstract class AbstractFragment : Fragment() {
 
-    abstract val viewModel: AbstractViewModel
+    abstract val viewModel: BaseViewModel
 
     /**
      * Hide all views in the [root] and then call one of the provided lambda functions

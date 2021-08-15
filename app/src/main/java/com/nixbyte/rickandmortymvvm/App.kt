@@ -8,6 +8,7 @@ import com.nixbyte.platform.view.BaseApplication
 import com.nixbyte.rickandmortymvvm.common.databinding.ViewDataBindingComponent
 import com.nixbyte.rickandmortymvvm.model.api.API
 import com.nixbyte.rickandmortymvvm.model.characters.NetworkCharactersRepository
+import com.nixbyte.rickandmortymvvm.model.episodes.NetworkEpisodesRepository
 import com.nixbyte.rickandmortymvvm.model.locations.NetworkLocationsRepository
 import com.squareup.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
@@ -19,6 +20,7 @@ class App : Application(), BaseApplication {
     override val repositories: List<Repository> = listOf(
         NetworkLocationsRepository(rxTasksFactory)
        ,NetworkCharactersRepository(rxTasksFactory)
+       ,NetworkEpisodesRepository(rxTasksFactory)
     )
 
     override fun onCreate() {

@@ -1,8 +1,5 @@
 package com.nixbyte.rickandmortymvvm.model.api
 
-import com.nixbyte.rickandmortymvvm.model.api.model.CharacterApiService
-import com.nixbyte.rickandmortymvvm.model.api.model.EpisodeApiService
-import com.nixbyte.rickandmortymvvm.model.api.model.LocationApiService
 import okhttp3.internal.http2.Header
 import okhttp3.logging.HttpLoggingInterceptor
 import com.nixbyte.platform.model.ApiConstructor

@@ -14,8 +14,8 @@ class NetworkLocationsRepository(private val taskFactory: RxTasksFactory
        }
     }
 
-    override fun getLocationById(id: String): Task<Location?> = taskFactory.async {
-        return@async API.LocationApiService().getLocationById(id).map {
+    override fun getLocation(url: String): Task<Location?> = taskFactory.async {
+        return@async API.LocationApiService().getLocation(url).map {
             return@map it.body()
         }
     }

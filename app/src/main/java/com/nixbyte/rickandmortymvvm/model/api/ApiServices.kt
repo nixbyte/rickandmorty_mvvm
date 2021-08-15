@@ -1,4 +1,4 @@
-package com.nixbyte.rickandmortymvvm.model.api.model
+package com.nixbyte.rickandmortymvvm.model.api
 
 import com.nixbyte.rickandmortymvvm.model.api.domain.All
 import com.nixbyte.rickandmortymvvm.model.api.domain.Character
@@ -8,6 +8,7 @@ import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Url
 
 interface LocationApiService {
     @GET("location")
@@ -15,6 +16,9 @@ interface LocationApiService {
 
     @GET("location/{id}")
     fun getLocationById(@Path("id") id: String) : Single<Response<Location>>
+
+    @GET
+    fun getLocation(@Url url: String) : Single<Response<Location>>
 
     @GET("location/{id}")
     fun getMultipleLocations(@Path("id") ids: String) : Single<Response<List<Location>>>
@@ -33,11 +37,11 @@ interface CharacterApiService {
 
 interface EpisodeApiService {
     @GET("episode")
-    fun getAllCharacters() : Single<Response<All<Episode>>>
+    fun getAllEpisodes() : Single<Response<All<Episode>>>
 
     @GET("episode/{id}")
-    fun getCharacterById( @Path("id") id: String) : Single<Response<Episode>>
+    fun getEpisodeById( @Path("id") id: String) : Single<Response<Episode>>
 
     @GET("episode/{id}")
-    fun getMultipleCharacters(@Path("ids") ids: String) : Single<Response<List<Episode>>>
+    fun getMultipleEpisodes(@Path("id") ids: String) : Single<Response<List<Episode>>>
 }

@@ -22,7 +22,7 @@ class ShapeableImageViewModel(var _url: String = "") : BaseObservable() {
             .load(url)
             .fit()
             .centerCrop()
-            .placeholder(R.drawable.splash)
+            .placeholder(R.mipmap.ic_launcher)
             .into(imageView)
     }
 }

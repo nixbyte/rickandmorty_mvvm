@@ -14,7 +14,7 @@ typealias MutableLiveResult<T> = MutableLiveData<Result<T>>
 /**
  * Base class for all view-models.
  */
-open class AbstractViewModel : ViewModel() {
+open class BaseViewModel : ViewModel() {
 
     private val tasks = mutableSetOf<Task<*>>()
 

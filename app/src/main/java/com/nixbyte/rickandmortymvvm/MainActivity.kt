@@ -10,7 +10,7 @@ import com.nixbyte.platform.view.FragmentsHolder
 import com.nixbyte.platform.viewmodel.ActivityScopeViewModel
 import com.nixbyte.rickandmortymvvm.databinding.ActivityMainBinding
 import com.nixbyte.rickandmortymvvm.screens.characters.CharactersFragment
-import com.nixbyte.rickandmortymvvm.screens.episodes.EpisodesFragment
+import com.nixbyte.rickandmortymvvm.screens.episodes.list.EpisodesFragment
 import com.nixbyte.rickandmortymvvm.screens.locations.list.LocationsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -53,15 +53,15 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
         binding.navigation.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.action_location -> {
-                    navigator.showScreen(LocationsFragment.Screen())
+                    navigator.showScreenAndClearStack(LocationsFragment.Screen())
                     true
                 }
                 R.id.action_character -> {
-                    navigator.showScreen(CharactersFragment.Screen())
+                    navigator.showScreenAndClearStack(CharactersFragment.Screen())
                     true
                 }
                 R.id.action_episode -> {
-                    navigator.showScreen(EpisodesFragment.Screen())
+                    navigator.showScreenAndClearStack(EpisodesFragment.Screen())
                     true
                 }
                 else -> {

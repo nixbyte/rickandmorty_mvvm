@@ -7,8 +7,8 @@ class IntermediateNavigator : Navigation {
 
     private val targetNavigator = ResourceActions<Navigation>()
 
-    override fun showScreen(screen: SerializableScreen) = targetNavigator {
-        it.showScreen(screen)
+    override fun showScreenAndClearStack(screen: SerializableScreen) = targetNavigator {
+        it.showScreenAndClearStack(screen)
     }
 
     override fun addScreen(screen: SerializableScreen) = targetNavigator {

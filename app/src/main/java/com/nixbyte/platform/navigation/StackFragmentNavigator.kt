@@ -24,7 +24,7 @@ class StackFragmentNavigator(
 
     private var result: Event<Any>? = null
 
-    override fun showScreen(screen: SerializableScreen) {
+    override fun showScreenAndClearStack(screen: SerializableScreen) {
         clearStack()
         launchFragment(screen, addToBackStack = false)
     }

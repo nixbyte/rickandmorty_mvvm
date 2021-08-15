@@ -10,4 +10,11 @@
     <string name="location_type">Тип локации: %s</string>
     <string name="location_dimension">Размер локация: %s</string>
     <string name="location_created">Создана локация: %s</string>
+    <string name="episode_name">Название серии: %s</string>
+    <string name="episode_episode">Номер серии: %s</string>
+    <string name="episode_air_date">Дата премьеры: %s</string>
+    <string name="character_name">Имя персонажа: %s</string>
+    <string name="character_gender">Пол: %s</string>
+    <string name="character_species">Разновидность: %s</string>
+    <string name="character_status">Состояние: %s</string>
 </resources>

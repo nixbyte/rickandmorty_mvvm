@@ -7,7 +7,7 @@ import com.nixbyte.rickandmortymvvm.common.recyclerview.ItemAction
 import com.nixbyte.rickandmortymvvm.common.recyclerview.ItemClickable
 import com.nixbyte.rickandmortymvvm.common.recyclerview.PaginationListAdapter
 
-abstract class ListViewModel<T : ItemClickable>(layoutId: Int, onItemClickAction: ItemAction<T>) : AbstractViewModel() {
+abstract class ListViewModel<T : ItemClickable>(layoutId: Int, onItemClickAction: ItemAction<T>) : BaseViewModel() {
 
     val TAG = ListViewModel::class.simpleName
     protected val _currentList = MutableLiveResult<List<T>?>(PendingResult())
