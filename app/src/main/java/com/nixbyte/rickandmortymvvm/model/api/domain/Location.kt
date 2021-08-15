@@ -11,12 +11,12 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Location(
     val id: Long? = 0,
-    val name: String?= "name",
-    val type: String?= "type",
-    val dimension: String?= "dimenstion",
+    val name: String?= "",
+    val type: String?= "",
+    val dimension: String?= "",
     val residents: List<String?>? = listOf(""),
-    val url: String? = "url",
-    val created: String? = "created"
+    val url: String? = "",
+    val created: String? = ""
 ) : Parcelable, ItemClickable {
 
     @Ignore

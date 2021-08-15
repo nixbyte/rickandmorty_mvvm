@@ -34,6 +34,17 @@ abstract class AbstractFragment : Fragment() {
         }
     }
 
+    fun <T> renderSimpleResult(result:Result<T>,
+                         onPending: () -> Unit = {},
+                         onError: (Exception) -> Unit = {},
+                         onSuccess: (T) -> Unit = {}) {
+        when (result) {
+            is SuccessResult -> onSuccess(result.data)
+            is ErrorResult -> onError(result.exception)
+            is PendingResult -> onPending()
+        }
+    }
+
     /**
      * Call this method when activity controls (e.g. toolbar) should be re-rendered
      */

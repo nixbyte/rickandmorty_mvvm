@@ -6,4 +6,8 @@
 
     <string name="error_try_again_later">Ошибка! Пожалуйста попробуйте позже!</string>
     <string name="try_again">Еще раз</string>
+    <string name="location_name">Локация: %s</string>
+    <string name="location_type">Тип локации: %s</string>
+    <string name="location_dimension">Размер локация: %s</string>
+    <string name="location_created">Создана локация: %s</string>
 </resources>

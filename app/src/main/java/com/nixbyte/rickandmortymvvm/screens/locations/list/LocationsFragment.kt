@@ -4,16 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nixbyte.platform.view.*
 import com.nixbyte.platform.viewmodel.SerializableScreen
-import com.nixbyte.rickandmortymvvm.R
-import com.nixbyte.rickandmortymvvm.databinding.FragmentCharactersBinding
-import com.nixbyte.rickandmortymvvm.databinding.FragmentLocationsBinding
+import com.nixbyte.rickandmortymvvm.databinding.FragmentRecyclerviewBinding
 import com.nixbyte.rickandmortymvvm.model.api.domain.Location
 
 class LocationsFragment : ListFragment<Location>(), HasScreenTitle {
@@ -24,7 +20,7 @@ class LocationsFragment : ListFragment<Location>(), HasScreenTitle {
     override fun getScreenTitle(): String? = viewModel.getTitle()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val binding = FragmentLocationsBinding.inflate(inflater,container,false)
+        val binding = FragmentRecyclerviewBinding.inflate(inflater,container,false)
 
         binding.list.adapter = viewModel.adapter
         binding.list.layoutManager = LinearLayoutManager(requireContext())

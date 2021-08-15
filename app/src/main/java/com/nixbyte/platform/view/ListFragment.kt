@@ -8,7 +8,7 @@ import com.nixbyte.platform.model.Result
 import com.nixbyte.rickandmortymvvm.R
 import com.nixbyte.rickandmortymvvm.databinding.PartResultBinding
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.fragment_locations.view.*
+import kotlinx.android.synthetic.main.fragment_recyclerview.view.*
 
 abstract class ListFragment<T> : AbstractFragment() {
     protected val subscriptions = CompositeDisposable()

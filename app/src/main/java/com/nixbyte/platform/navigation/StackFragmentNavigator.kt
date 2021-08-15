@@ -25,6 +25,7 @@ class StackFragmentNavigator(
     private var result: Event<Any>? = null
 
     override fun showScreen(screen: SerializableScreen) {
+        clearStack()
         launchFragment(screen, addToBackStack = false)
     }
 
@@ -69,6 +70,12 @@ class StackFragmentNavigator(
 
         } else {
             activity.supportActionBar?.title = defaultTitle
+        }
+    }
+
+    private fun clearStack() {
+        if (activity.supportFragmentManager.backStackEntryCount > 0) {
+            activity.supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
     }
 

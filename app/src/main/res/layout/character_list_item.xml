@@ -29,7 +29,8 @@
             android:id="@+id/character_name_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="@{model.name}"
+
             app:layout_constraintTop_toTopOf="@+id/image"
             app:layout_constraintBottom_toTopOf="@+id/character_gender"
             app:layout_constraintLeft_toRightOf="@+id/image"/>
@@ -38,7 +39,7 @@
             android:id="@+id/character_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{model.name}"
+            android:text="Name"
             app:layout_constraintLeft_toRightOf="@+id/character_name_layout"
             app:layout_constraintBottom_toTopOf="@+id/character_gender"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -47,7 +48,8 @@
             android:id="@+id/character_gender_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gender"
+            android:text="@{model.gender}"
+
             app:layout_constraintBottom_toTopOf="@+id/character_species"
             app:layout_constraintLeft_toRightOf="@+id/image"/>
 
@@ -55,7 +57,7 @@
             android:id="@+id/character_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{model.gender}"
+            android:text="Gender"
             app:layout_constraintBottom_toTopOf="@+id/character_species"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -63,7 +65,7 @@
             android:id="@+id/character_species_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Species"
+            android:text="@{model.species}"
             app:layout_constraintTop_toBottomOf="@+id/character_gender_layout"
             app:layout_constraintLeft_toRightOf="@+id/image"/>
 
@@ -71,7 +73,7 @@
             android:id="@+id/character_species"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{model.species}"
+            android:text="Species"
             app:layout_constraintTop_toBottomOf="@+id/character_gender"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -79,7 +81,7 @@
             android:id="@+id/character_status_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status"
+            android:text="@{model.status}"
             app:layout_constraintTop_toBottomOf="@+id/character_species_layout"
             app:layout_constraintLeft_toRightOf="@+id/image"/>
 
@@ -87,7 +89,7 @@
             android:id="@+id/character_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{model.status}"
+            android:text="Status"
             app:layout_constraintTop_toBottomOf="@+id/character_species"
             app:layout_constraintEnd_toEndOf="parent"/>
 

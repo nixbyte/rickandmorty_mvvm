@@ -7,12 +7,13 @@ import com.nixbyte.rickandmortymvvm.R
 import com.nixbyte.rickandmortymvvm.common.recyclerview.PaginatedRecyclerView
 import com.nixbyte.rickandmortymvvm.model.api.domain.Character
 import com.nixbyte.rickandmortymvvm.model.characters.CharactersRepository
+import com.nixbyte.rickandmortymvvm.screens.characters.details.CharacterDetailsFragment
 
 class CharactersViewModel(private val navigation: Navigation
                          ,private val uiActions: UiActions
                          ,private val charactersRepository: CharactersRepository)
 : ListViewModel<Character>(R.layout.character_list_item, { view, character, position ->
-//    navigation.addScreen(CharacterDetailFragment.Screen(location))
+    navigation.addScreen(CharacterDetailsFragment.Screen(character))
 })  {
 
     init {
