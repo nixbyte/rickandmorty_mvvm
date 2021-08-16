@@ -20,6 +20,7 @@ interface AppComponent {
 @Module
 object AppModule {
 
+    @Singleton
     @Provides
     fun repositories(taskFactory: RxTasksFactory) : List<Repository> {
         return listOf(
