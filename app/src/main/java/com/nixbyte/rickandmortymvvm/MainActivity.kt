@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.nixbyte.platform.navigation.IntermediateNavigator
 import com.nixbyte.platform.navigation.StackFragmentNavigator
-import com.nixbyte.platform.uiactions.AndroidUiActions
+import com.nixbyte.platform.resources.AndroidResources
 import com.nixbyte.platform.utils.viewModelCreator
 import com.nixbyte.platform.view.FragmentsHolder
 import com.nixbyte.platform.viewmodel.ActivityScopeViewModel
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
 
     private val activityViewModel by viewModelCreator<ActivityScopeViewModel> {
         ActivityScopeViewModel(
-            uiActions = AndroidUiActions(applicationContext),
+            resources = AndroidResources(applicationContext),
             navigator = IntermediateNavigator()
         )
     }

@@ -3,8 +3,6 @@ package com.nixbyte.rickandmortymvvm
 import android.app.Application
 import android.content.Context
 import androidx.databinding.DataBindingUtil
-import com.nixbyte.platform.view.AppComponent
-import com.nixbyte.platform.view.DaggerAppComponent
 import com.nixbyte.rickandmortymvvm.common.databinding.ViewDataBindingComponent
 import com.nixbyte.rickandmortymvvm.model.api.API
 import com.squareup.picasso.OkHttp3Downloader

@@ -14,6 +14,7 @@ import javax.inject.Inject
 /**
  * Use this method for getting view-models from your fragments
  */
+//TODO Rewrite this to Dagger
 inline fun <reified VM : ViewModel> AbstractFragment.screenViewModel() = viewModels<VM> {
 
     val screen = requireArguments().getSerializable(ARG_SCREEN) as SerializableScreen

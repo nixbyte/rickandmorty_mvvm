@@ -1,4 +1,4 @@
-package com.nixbyte.platform.view
+package com.nixbyte.rickandmortymvvm
 
 import com.nixbyte.platform.model.Repository
 import com.nixbyte.platform.model.RxTaskFactory
@@ -25,8 +25,8 @@ object AppModule {
     fun repositories(taskFactory: RxTasksFactory) : List<Repository> {
         return listOf(
             provideLocationRepository(taskFactory)
-            ,provideCharacterRepository(taskFactory)
-            ,provideEpisodeRepository(taskFactory)
+            , provideCharacterRepository(taskFactory)
+            , provideEpisodeRepository(taskFactory)
         )
     }
 
