@@ -8,6 +8,7 @@ import com.nixbyte.rickandmortymvvm.common.recyclerview.PaginatedRecyclerView
 import com.nixbyte.rickandmortymvvm.model.api.domain.Location
 import com.nixbyte.rickandmortymvvm.model.locations.LocationsRepository
 import com.nixbyte.rickandmortymvvm.screens.locations.details.LocationDetailFragment
+import javax.inject.Inject
 
 class LocationsViewModel(private val navigation: Navigation
                         ,private val uiActions: UiActions

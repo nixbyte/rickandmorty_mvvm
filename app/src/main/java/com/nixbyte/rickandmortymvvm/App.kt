@@ -1,27 +1,18 @@
 package com.nixbyte.rickandmortymvvm
 
 import android.app.Application
+import android.content.Context
 import androidx.databinding.DataBindingUtil
-import com.nixbyte.platform.model.Repository
-import com.nixbyte.platform.model.RxTaskFactory
-import com.nixbyte.platform.view.BaseApplication
+import com.nixbyte.platform.view.AppComponent
+import com.nixbyte.platform.view.DaggerAppComponent
 import com.nixbyte.rickandmortymvvm.common.databinding.ViewDataBindingComponent
 import com.nixbyte.rickandmortymvvm.model.api.API
-import com.nixbyte.rickandmortymvvm.model.characters.NetworkCharactersRepository
-import com.nixbyte.rickandmortymvvm.model.episodes.NetworkEpisodesRepository
-import com.nixbyte.rickandmortymvvm.model.locations.NetworkLocationsRepository
 import com.squareup.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
 
-class App : Application(), BaseApplication {
+class App : Application() {
 
-    private val rxTasksFactory = RxTaskFactory()
-
-    override val repositories: List<Repository> = listOf(
-        NetworkLocationsRepository(rxTasksFactory)
-       ,NetworkCharactersRepository(rxTasksFactory)
-       ,NetworkEpisodesRepository(rxTasksFactory)
-    )
+    lateinit var appComponent: AppComponent
 
     override fun onCreate() {
         super.onCreate()
@@ -30,5 +21,13 @@ class App : Application(), BaseApplication {
             .loggingEnabled(true)
         Picasso.setSingletonInstance(picassoBuilder.build())
         DataBindingUtil.setDefaultComponent(ViewDataBindingComponent())
+        appComponent = DaggerAppComponent.create()
     }
 }
+
+val Context.appComponent: AppComponent
+    get() = when(this) {
+        is App -> appComponent
+        else -> this.applicationContext.appComponent
+    }
+

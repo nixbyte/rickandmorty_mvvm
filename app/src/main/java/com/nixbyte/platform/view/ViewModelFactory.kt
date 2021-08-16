@@ -7,13 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.nixbyte.platform.viewmodel.SerializableScreen
 import com.nixbyte.platform.viewmodel.SerializableScreen.Companion.ARG_SCREEN
+import com.nixbyte.rickandmortymvvm.appComponent
 import java.lang.reflect.Constructor
+import javax.inject.Inject
 
 /**
  * Use this method for getting view-models from your fragments
  */
 inline fun <reified VM : ViewModel> AbstractFragment.screenViewModel() = viewModels<VM> {
-    val application = requireActivity().application as BaseApplication
+
     val screen = requireArguments().getSerializable(ARG_SCREEN) as SerializableScreen
 
     val activityScopeViewModel = (requireActivity() as FragmentsHolder).getActivityScopeViewModel()
@@ -22,7 +24,7 @@ inline fun <reified VM : ViewModel> AbstractFragment.screenViewModel() = viewMod
     // - singleton scope dependencies (repositories) -> from App class
     // - activity VM scope dependencies -> from ActivityScopeViewModel
     // - screen VM scope dependencies -> screen args
-    val dependencies = listOf(screen, activityScopeViewModel) + application.repositories
+    val dependencies = listOf(screen, activityScopeViewModel) + requireActivity().appComponent.repositories
 
     // creating factory
     ViewModelFactory(dependencies, this)
